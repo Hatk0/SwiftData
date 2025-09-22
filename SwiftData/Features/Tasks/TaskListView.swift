@@ -1,13 +1,6 @@
-//
-//  ContentView.swift
-//  SwiftData
-//
-//  Created by Dmitry Yastrebov on 22.09.2025.
-//
-
 import SwiftUI
 
-struct ContentView: View {
+struct TaskListView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +13,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    TaskListView()
 }
