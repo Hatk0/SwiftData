@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		73A35DB72E814021005C8F89 /* SwiftData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftData.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		73A35DB72E814021005C8F89 /* Tickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		73A35DB92E814021005C8F89 /* SwiftData */ = {
+		73A35DB92E814021005C8F89 /* Tickr */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SwiftData;
+			path = Tickr;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		73A35DAE2E814021005C8F89 = {
 			isa = PBXGroup;
 			children = (
-				73A35DB92E814021005C8F89 /* SwiftData */,
+				73A35DB92E814021005C8F89 /* Tickr */,
 				73A35DB82E814021005C8F89 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +40,7 @@
 		73A35DB82E814021005C8F89 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				73A35DB72E814021005C8F89 /* SwiftData.app */,
+				73A35DB72E814021005C8F89 /* Tickr.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		73A35DB62E814021005C8F89 /* SwiftData */ = {
+		73A35DB62E814021005C8F89 /* Tickr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 73A35DC22E814022005C8F89 /* Build configuration list for PBXNativeTarget "SwiftData" */;
+			buildConfigurationList = 73A35DC22E814022005C8F89 /* Build configuration list for PBXNativeTarget "Tickr" */;
 			buildPhases = (
 				73A35DB32E814021005C8F89 /* Sources */,
 				73A35DB42E814021005C8F89 /* Frameworks */,
@@ -61,13 +61,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				73A35DB92E814021005C8F89 /* SwiftData */,
+				73A35DB92E814021005C8F89 /* Tickr */,
 			);
-			name = SwiftData;
+			name = Tickr;
 			packageProductDependencies = (
 			);
 			productName = SwiftData;
-			productReference = 73A35DB72E814021005C8F89 /* SwiftData.app */;
+			productReference = 73A35DB72E814021005C8F89 /* Tickr.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 73A35DB22E814021005C8F89 /* Build configuration list for PBXProject "SwiftData" */;
+			buildConfigurationList = 73A35DB22E814021005C8F89 /* Build configuration list for PBXProject "Tickr" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				73A35DB62E814021005C8F89 /* SwiftData */,
+				73A35DB62E814021005C8F89 /* Tickr */,
 			);
 		};
 /* End PBXProject section */
@@ -315,7 +315,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		73A35DB22E814021005C8F89 /* Build configuration list for PBXProject "SwiftData" */ = {
+		73A35DB22E814021005C8F89 /* Build configuration list for PBXProject "Tickr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				73A35DC02E814022005C8F89 /* Debug */,
@@ -324,7 +324,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		73A35DC22E814022005C8F89 /* Build configuration list for PBXNativeTarget "SwiftData" */ = {
+		73A35DC22E814022005C8F89 /* Build configuration list for PBXNativeTarget "Tickr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				73A35DC32E814022005C8F89 /* Debug */,
