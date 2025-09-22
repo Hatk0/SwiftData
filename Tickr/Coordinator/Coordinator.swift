@@ -5,30 +5,23 @@ import SwiftData
 final class Coordinator {
     
     var path = NavigationPath()
-    var sheet: Sheet?
     
     @ViewBuilder
     func build(_ screen: Screen) -> some View {
         switch screen {
         case .tasks:
             TaskListView { [weak self] in
-                self?.present(.addTask)
-            } onShowDetails: {  [weak self] task in
+                self?.push(.addTask)
+            } onShowDetails: { [weak self] task in
                 self?.push(.taskDetails(task))
+            }
+        case .addTask:
+            AddTaskView { [weak self] in
+                self?.pop()
             }
         case .taskDetails(let task):
             TaskDetailView(task: task) { [weak self] in
                 self?.pop()
-            }
-        }
-    }
-    
-    @ViewBuilder
-    func build(_ sheet: Sheet) -> some View {
-        switch sheet {
-        case .addTask:
-            AddTaskView { [weak self] in
-                self?.dismissSheet()
             }
         }
     }
@@ -40,10 +33,6 @@ private extension Coordinator {
         self.path.append(screen)
     }
     
-    func present(_ sheet: Sheet) {
-        self.sheet = sheet
-    }
-    
     func pop() {
         guard !path.isEmpty else { return }
         path.removeLast()
@@ -51,9 +40,5 @@ private extension Coordinator {
     
     func popToRoot() {
         path.removeLast(path.count)
-    }
-    
-    func dismissSheet() {
-        self.sheet = nil
     }
 }

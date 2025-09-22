@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftData
 
 struct TaskDetailView: View {
     @Environment(TaskViewModel.self) private var taskViewModel
@@ -8,16 +7,30 @@ struct TaskDetailView: View {
     var onDismiss: () -> Void
     
     var body: some View {
-        Form {
+        VStack(spacing: 24) {
             TextField("Title", text: $task.title)
-            Toggle("Done", isOn: $task.isDone)
+                .cardTextFieldStyle()
             
-            Button("Save") {
-                taskViewModel.updateTask(task, title: task.title, isDone: task.isDone)
-                onDismiss()
-            }
-            .padding()
+            Text("Save")
+                .actionButtonStyle(background: AppColors.primaryColor) {
+                    Task {
+                        await taskViewModel.updateTask(task, title: task.title)
+                        onDismiss()
+                    }
+                }
+            
+            Text("Delete")
+                .actionButtonStyle(background: .red) {
+                    Task {
+                        await taskViewModel.deleteTasks(at: IndexSet(integer: taskViewModel.tasks.firstIndex(of: task) ?? 0))
+                        onDismiss()
+                    }
+                }
+            
+            Spacer()
         }
+        .padding([.top, .horizontal])
+        .background(AppColors.background.ignoresSafeArea())
         .navigationTitle("Task Details")
     }
 }

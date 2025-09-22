@@ -12,9 +12,6 @@ struct CoordinatorView: View {
                 .navigationDestination(for: Screen.self) { screen in
                     coordinator.build(screen)
                 }
-                .sheet(item: $coordinator.sheet) { sheet in
-                    coordinator.build(sheet)
-                }
         }
         .environment(taskViewModel)
         .task {

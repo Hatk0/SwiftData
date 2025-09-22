@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftData
 
 struct AddTaskView: View {
     @Environment(TaskViewModel.self) private var taskViewModel
@@ -8,25 +7,24 @@ struct AddTaskView: View {
     var onDismiss: () -> Void
     
     var body: some View {
-        NavigationStack {
-            Form {
-                TextField("Task title", text: $title)
-                
-                Button("Add") {
+        VStack(spacing: 24) {
+            TextField("Title", text: $title)
+                .cardTextFieldStyle()
+            
+            Text("Add Task")
+                .actionButtonStyle(background: AppColors.primaryColor) {
                     guard !title.isEmpty else { return }
-                    taskViewModel.addTask(title: title)
-                    onDismiss()
-                }
-                .padding()
-            }
-            .navigationTitle("Add Task")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    
+                    Task {
+                        await taskViewModel.addTask(title: title)
                         onDismiss()
                     }
                 }
-            }
+            
+            Spacer()
         }
+        .padding([.top, .horizontal])
+        .background(AppColors.background.ignoresSafeArea())
+        .navigationTitle("Add Task")
     }
 }
