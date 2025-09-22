@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 @Observable
 final class Coordinator {
@@ -10,9 +11,15 @@ final class Coordinator {
     func build(_ screen: Screen) -> some View {
         switch screen {
         case .tasks:
-            TaskListView()
+            TaskListView { [weak self] in
+                self?.present(.addTask)
+            } onShowDetails: {  [weak self] task in
+                self?.push(.taskDetails(task))
+            }
         case .taskDetails(let task):
-            TaskDetailView(task: task)
+            TaskDetailView(task: task) { [weak self] in
+                self?.pop()
+            }
         }
     }
     
@@ -20,7 +27,9 @@ final class Coordinator {
     func build(_ sheet: Sheet) -> some View {
         switch sheet {
         case .addTask:
-            AddTaskView()
+            AddTaskView { [weak self] in
+                self?.dismissSheet()
+            }
         }
     }
 }

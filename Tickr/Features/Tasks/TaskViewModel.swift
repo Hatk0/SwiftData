@@ -6,43 +6,40 @@ import SwiftData
 final class TaskViewModel {
     
     var tasks: [TaskItem] = []
-    private let taskService: TaskService
     
-    init(taskService: TaskService) {
-        self.taskService = taskService
+    private var taskService: TaskService?
+
+    func setContext(_ context: ModelContext) {
+        taskService = TaskService(context: context)
         loadTasks()
     }
-    
+
     func loadTasks(search: String = "") {
-        tasks = taskService.fetchTasks(search: search)
+        guard let service = taskService else { return }
+        tasks = service.fetchTasks(search: search)
     }
-    
-    
+
     func addTask(title: String) {
-        taskService.addTask(title: title)
+        guard let service = taskService else { return }
+        service.addTask(title: title)
         loadTasks()
     }
-    
-    func updateTask(
-        _ task: TaskItem,
-        title: String? = nil,
-        isDone: Bool? = nil
-    ) {
-        taskService.updateTask(
-            task,
-            title: title,
-            isDone: isDone
-        )
+
+    func updateTask(_ task: TaskItem, title: String? = nil, isDone: Bool? = nil) {
+        guard let service = taskService else { return }
+        service.updateTask(task, title: title, isDone: isDone)
         loadTasks()
     }
-    
+
     func toggleTask(_ task: TaskItem) {
-        taskService.toggleTask(task)
+        guard let service = taskService else { return }
+        service.toggleTask(task)
         loadTasks()
     }
-    
+
     func deleteTasks(at offsets: IndexSet) {
-        offsets.map { tasks[$0] }.forEach { taskService.deleteTask($0) }
+        guard let service = taskService else { return }
+        offsets.map { tasks[$0] }.forEach { service.deleteTask($0) }
         loadTasks()
     }
 }
