@@ -1,10 +1,12 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct SwiftDataApp: App {
     var body: some Scene {
         WindowGroup {
-            TaskListView()
+            CoordinatorView()
         }
+        .modelContainer(for: TaskItem.self)
     }
 }
